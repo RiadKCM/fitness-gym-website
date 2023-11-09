@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/reservation', function () {
-    return view('reservation');
+    return view('reservations');
 });
 
 
