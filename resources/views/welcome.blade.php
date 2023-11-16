@@ -57,7 +57,6 @@
     </style>
 </head>
 <body class="antialiased">
-  @yield('content')
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ '/' }}">Navbar</a>
@@ -70,7 +69,7 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <a class="nav-link" href="{{ route('coach') }}">Coach</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ route('abonnement') }}">Abonnement</a>
@@ -88,6 +87,7 @@
     </div>
   </div>
 </nav>
+@yield('content')
 </body>
 </html>
 

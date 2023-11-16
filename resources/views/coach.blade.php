@@ -2,5 +2,5 @@
 
 
 @section('content')
-    <p>abonnement</p>
+    <p>coach</p>
 @endsection
