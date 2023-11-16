@@ -31,8 +31,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/reservation', function () {
-    return view('reservations');
-});
+    return view('reservation');
+})->middleware(['auth', 'verified'])->name('reservation');
 
 
 

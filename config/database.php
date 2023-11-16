@@ -5,6 +5,7 @@ use Illuminate\Support\Str;
 return [
 
     /*
+     * On spécifie les connections par défauts
     |--------------------------------------------------------------------------
     | Default Database Connection Name
     |--------------------------------------------------------------------------

@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -12,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('sports', function (Blueprint $table) {
 
             $table->id();
-            $table->dateTime('date_reservation'); // Date de la réservation de la séance
-            $table->unsignedBigInteger('id_user');
+            $table->string('nom');
+            $table->unsignedBigInteger('id_coach');
             $table->unsignedBigInteger('id_seance');
 
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_coach')->references('id')->on('coachs')->onDelete('cascade');
             $table->foreign('id_seance')->references('id')->on('seances')->onDelete('cascade');
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reservations');
+        Schema::dropIfExists('sports');
     }
 };
