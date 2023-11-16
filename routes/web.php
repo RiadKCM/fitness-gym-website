@@ -2,6 +2,7 @@
 
 <?php
 
+use App\Http\Controllers\AbonnementController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,9 +35,7 @@ Route::get('/reservation', function () {
     return view('reservation');
 })->middleware(['auth', 'verified'])->name('reservation');
 
-Route::get('extends/abonnement',function(){
-    return view('abonnement');
-});
+Route::get('/abonnement',[AbonnementController::class, 'index'])->name('abonnement');
 
 require __DIR__.'/auth.php';
 
