@@ -34,7 +34,9 @@ Route::get('/reservation', function () {
     return view('reservation');
 })->middleware(['auth', 'verified'])->name('reservation');
 
-
+Route::get('extends/abonnement',function(){
+    return view('abonnement');
+});
 
 require __DIR__.'/auth.php';
 
