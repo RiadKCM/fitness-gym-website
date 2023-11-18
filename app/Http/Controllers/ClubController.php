@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
-class CoachController extends Controller
+class ClubController extends Controller
 {
-    
     public function index() : View {
-        return view('Muscu.coach');
+        return view('Muscu.club');
     }
-
 }
