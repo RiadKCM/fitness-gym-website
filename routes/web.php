@@ -6,6 +6,7 @@ use App\Http\Controllers\CoachController;
 use App\Http\Controllers\AbonnementController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\GalerieController;
+use App\Http\Controllers\GoMuscuController;
 use App\Http\Controllers\HoraireController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -39,15 +40,15 @@ Route::get('/reservation', function () {
     return view('reservation');
 })->middleware(['auth', 'verified'])->name('reservation');
 
-Route::get('/abonnement',[AbonnementController::class, 'index'])->name('Muscu.abonnement');
+Route::get('/abonnement',[GoMuscuController::class, 'abonnement'])->name('Muscu.abonnement');
 
-Route::get('/coach',[CoachController::class, 'index'])->name('Muscu.coach');
+Route::get('/coach',[GoMuscuController::class, 'coach'])->name('Muscu.coach');
 
-Route::get('/galerie',[GalerieController::class, 'index'])->name('Muscu.galerie');
+Route::get('/galerie',[GoMuscuController::class, 'galerie'])->name('Muscu.galerie');
 
-Route::get('/horaire',[HoraireController::class, 'index'])->name('Muscu.horaire');
+Route::get('/horaire',[GoMuscuController::class, 'horaire'])->name('Muscu.horaire');
 
-Route::get('/club',[ClubController::class, 'index'])->name('Muscu.club');
+Route::get('/club',[GoMuscuController::class, 'club'])->name('Muscu.club');
 
 
 require __DIR__.'/auth.php';
