@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('sports', function (Blueprint $table) {
 
             $table->id();
-            $table->string('nom');
+            $table->string('type');
             $table->unsignedBigInteger('id_coach');
             $table->unsignedBigInteger('id_seance');
 

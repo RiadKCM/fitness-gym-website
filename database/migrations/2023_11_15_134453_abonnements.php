@@ -15,7 +15,8 @@ return new class extends Migration
         Schema::create('abonnements', function (Blueprint $table) {
 
             $table->id();
-            $table->string('type_abonnements');
+            $table->string('name');
+            $table->string('price');
             $table->unsignedBigInteger('id_users');
 
             $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade');

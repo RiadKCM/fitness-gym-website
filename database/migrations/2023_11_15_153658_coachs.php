@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('coachs', function (Blueprint $table) {
 
             $table->id();
-            $table->string('nom');
-            $table->string('prenom');
+            $table->string('last_name');
+            $table->string('name');
             $table->unsignedBigInteger('id_seance');
 
             $table->foreign('id_seance')->references('id')->on('seances')->onDelete('cascade');
