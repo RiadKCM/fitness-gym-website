@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('coachs', function (Blueprint $table) {
 
             $table->id();
-            $table->string('last_name');
-            $table->string('name');
-            $table->unsignedBigInteger('id_seance');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->unsignedBigInteger('id_sport');
 
-            $table->foreign('id_seance')->references('id')->on('seances')->onDelete('cascade');
+            $table->foreign('id_sport')->references('id')->on('sports')->onDelete('cascade');
         });
     }
 

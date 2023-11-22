@@ -12,11 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('seances', function (Blueprint $table) {
-
             $table->id();
-            $table->string('type_cours'); // Date de la réservation de la séance
+            $table->string('type_cours'); // type de la séance. collectif ou individuel
+            $table->string('intensite');
+            $table->unsignedBigInteger('capacite');
+            $table->time('duree');
             $table->unsignedBigInteger('id_sport');
+            $table->unsignedBigInteger('id_coach');
 
+            $table->foreign('id_coach')->references('id')->on('coachs')->onDelete('cascade');
+            $table->foreign('id_sport')->references('id')->on('sports')->onDelete('cascade');
         });
     }
 

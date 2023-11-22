@@ -14,12 +14,8 @@ return new class extends Migration
         Schema::create('sports', function (Blueprint $table) {
 
             $table->id();
-            $table->string('type');
-            $table->unsignedBigInteger('id_coach');
-            $table->unsignedBigInteger('id_seance');
-
-            $table->foreign('id_coach')->references('id')->on('coachs')->onDelete('cascade');
-            $table->foreign('id_seance')->references('id')->on('seances')->onDelete('cascade');
+            $table->string('nom_sport');
+            $table->string('Description');
         });
     }
 

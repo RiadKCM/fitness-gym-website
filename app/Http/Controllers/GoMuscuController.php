@@ -7,7 +7,7 @@ use Illuminate\View\View;
 
 class GoMuscuController extends Controller
 {
-    public function abonnement (){
+    public function abonnement () : View{
         return view('Muscu.abonnement');
     }
     public function galerie() : View {
