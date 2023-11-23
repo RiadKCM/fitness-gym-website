@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Abonnement;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +16,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        DB::table('sports')->insert([
+            [
+                'nom_sport' => 'Musculation',
+                'Description' => 'Description Musculation',
+            ],
+            [
+                'nom_sport' => 'Boxe',
+                'Description' => 'Description Boxe',
+            ],
+            [
+                'nom_sport' => 'Cours Collectif',
+                'Description' => 'Description Cours Collectif',
+            ]
+        ]);
     }
 }
