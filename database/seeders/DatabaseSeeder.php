@@ -16,19 +16,41 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('sports')->insert([
-            [
-                'nom_sport' => 'Musculation',
-                'Description' => 'Description Musculation',
-            ],
-            [
-                'nom_sport' => 'Boxe',
-                'Description' => 'Description Boxe',
-            ],
-            [
-                'nom_sport' => 'Cours Collectif',
-                'Description' => 'Description Cours Collectif',
-            ]
-        ]);
+        // DB::table('sports')->insert([
+        //     [
+        //         'nom_sport' => 'Musculation',
+        //         'Description' => 'Description Musculation',
+        //     ],
+        //     [
+        //         'nom_sport' => 'Boxe',
+        //         'Description' => 'Description Boxe',
+        //     ],
+        //     [
+        //         'nom_sport' => 'Cours Collectif',
+        //         'Description' => 'Description Cours Collectif',
+        //     ]
+        // ]);
+
+
+        // DB::table('abonnements')->insert([
+        //     [
+        //         'type_abonnements' => 'Solo',
+        //         'prix'=> '30',
+        //         'Description' => 'Description de l abonnement Solo',
+        //         'duree_validite' => '1',
+        //     ],
+        //     [
+        //         'type_abonnements' => 'Duo',
+        //         'prix'=> '40',
+        //         'Description' => 'Description de l abonnement Duo',
+        //         'duree_validite' => '1',
+        //     ],
+        //     [
+        //         'type_abonnements' => 'Boxe',
+        //         'prix'=> '35',
+        //         'Description' => 'Description de l abonnement Boxe',
+        //         'duree_validite' => '1',
+        //     ]
+        // ]);
     }
 }
