@@ -46,7 +46,7 @@ class AdminController extends Controller
             'Description' => 'required',
         ]);
     
-        Abonnement::create([
+        $abonnement = Abonnement::create([
             'type_abonnements' => $request->input('type_abonnements'),
             'prix' => $request->input('prix'),
             'duree_validite' => $request->input('duree_validite'),
