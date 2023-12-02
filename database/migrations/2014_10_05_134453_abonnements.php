@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('type_abonnements');
             $table->unsignedBigInteger('prix');
-            $table->string('Description');
             $table->unsignedBigInteger('duree_validite');
+            $table->string('Description');
 
         });
     }

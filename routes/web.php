@@ -10,6 +10,8 @@ use App\Http\Controllers\GoMuscuController;
 use App\Http\Controllers\HoraireController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +51,18 @@ Route::get('/galerie',[GoMuscuController::class, 'galerie'])->name('Muscu.galeri
 Route::get('/horaire',[GoMuscuController::class, 'horaire'])->name('Muscu.horaire');
 
 Route::get('/club',[GoMuscuController::class, 'club'])->name('Muscu.club');
+
+Route::get('/admin',[AdminController::class, 'admin'])->name('admin.admin');
+
+Route::get('/baseAdmin',[AdminController::class, 'baseAdmin'])->name('admin.baseAdmin');
+
+Route::get('/ListAbonnement',[AdminController::class, 'ListAbonnement'])->name('admin.ListAbonnement');
+
+Route::get('/AddAbonnement',[AdminController::class, 'AddAbonnement'])->name('admin.AddAbonnement');
+Route::post('/AddAbonnement',[AdminController::class, 'create']);
+
+Route::get('/EditCoach',[AdminController::class, 'EditCoach'])->name('admin.EditCoach');
+
 
 
 require __DIR__.'/auth.php';

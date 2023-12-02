@@ -187,6 +187,7 @@ ol {
 	border-color: #f36100;
 }
 
+
 /* Preloder */
 
 #preloder {
@@ -706,6 +707,7 @@ ol {
 /*---------------------
   Banner Section
 -----------------------*/
+
 
 .banner-section {
 	height: 550px;
@@ -2168,19 +2170,29 @@ ol {
 }
 
 /*--------------------------
-  Blog Detils Hero Section
+  Blog Details Hero Section
 --------------------------*/
 
+
 .blog-details-hero {
-	height: 900px;
-	padding-top: 365px;
+    height: 900px;
+    padding-top: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+/* .blog-details-hero {
+	height: 900px;
+	padding-top: 200px;
+} */
 
 .bh-text {
-	background: rgba(0, 0, 0, 0.8);
-	text-align: center;
-	padding: 40px 50px 34px 50px;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 40px 50px 34px 50px;
 }
+
+
 
 .bh-text h3 {
 	color: #ffffff;
@@ -2556,10 +2568,11 @@ ol {
 	color: #ffffff;
 	text-transform: uppercase;
 	font-weight: 700;
-	width: 100%;
+	width: 40%;
 	border: none;
 	padding: 14px 0 12px;
 	background: #f36100;
+	border-radius: 5px;
 }
 
 /*---------------------
@@ -2648,7 +2661,7 @@ ol {
   404 Section
 -----------------------*/
 
-.section-404 {
+.section-404{
 	position: fixed;
 	width: 100%;
 	height: 100%;

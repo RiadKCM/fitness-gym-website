@@ -53,6 +53,5 @@ class DatabaseSeeder extends Seeder
         //         'duree_validite' => '1',
         //     ]
         // ]);
-        User::factory(10)->create();
     }
 }
