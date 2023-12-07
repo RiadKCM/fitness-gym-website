@@ -2,16 +2,13 @@
 
 <?php
 
-use App\Http\Controllers\CoachController;
-use App\Http\Controllers\AbonnementController;
-use App\Http\Controllers\ClubController;
-use App\Http\Controllers\GalerieController;
 use App\Http\Controllers\GoMuscuController;
-use App\Http\Controllers\HoraireController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\AbonnementAdminController;
+use App\Http\Controllers\CoachAdminController;
+use App\Http\Controllers\SportAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,13 +54,16 @@ Route::get('/admin',[AdminController::class, 'admin'])->name('admin.admin');
 Route::get('/baseAdmin',[AdminController::class, 'baseAdmin'])->name('admin.baseAdmin');
 
 Route::get('/ListAbonnement',[AdminController::class, 'ListAbonnement'])->name('admin.ListAbonnement');
+Route::get('/create',[AbonnementAdminController::class, 'create'])->name('admin.abonnement.create');
+Route::post('/store',[AbonnementAdminController::class, 'store'])->name('admin.abonnement.store');
 
-Route::get('/AddAbonnement',[AdminController::class, 'AddAbonnement'])->name('admin.AddAbonnement');
-Route::post('/AddAbonnement',[AdminController::class, 'create']);
+Route::get('/ListCoach',[AdminController::class, 'ListCoach'])->name('admin.ListCoach');
+Route::get('/create',[CoachAdminController::class, 'create'])->name('admin.coach.create');
+Route::post('/store',[CoachAdminController::class, 'store'])->name('admin.coach.store');
 
-Route::get('/EditCoach',[AdminController::class, 'EditCoach'])->name('admin.EditCoach');
-
-
+Route::get('/ListSport',[AdminController::class, 'ListSport'])->name('admin.ListSport');
+Route::get('/create',[SportAdminController::class, 'create'])->name('admin.sport.create');
+Route::post('/store',[SportAdminController::class, 'store'])->name('admin.sport.store');
 
 require __DIR__.'/auth.php';
 

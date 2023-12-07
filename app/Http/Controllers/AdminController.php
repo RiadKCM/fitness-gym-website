@@ -20,49 +20,18 @@ class AdminController extends Controller
         return view('admin.AddAbonnement');
     }
 
-    // public function AjouterAbonnement(Request $request) {
-    //     $request->validate([
-    //         'type_abonnements' => 'required',
-    //         'prix' => 'required',
-    //         'duree_validite' => 'required',
-    //         'Description' => 'required',
-    //     ]);
-
-    //     Abonnement::create([
-    //         'type_abonnements' => $request->type_abonnements,
-    //         'prix' => $request->prix,
-    //         'duree_validite' => $request->duree_validite,
-    //         'Description' => $request->Description,
-    //     ]);
-
-    //     return redirect('/AddAbonnement')->with('status','L\'abonnement a bien été ajouté');
-    // }
-
-    public function create(Request $request) {
-        $request->validate([
-            'type_abonnements' => 'required',
-            'prix' => 'required',
-            'duree_validite' => 'required',
-            'Description' => 'required',
-        ]);
-    
-        $abonnement = Abonnement::create([
-            'type_abonnements' => $request->input('type_abonnements'),
-            'prix' => $request->input('prix'),
-            'duree_validite' => $request->input('duree_validite'),
-            'Description' => $request->input('Description'),
-        ]);
-        // dd($request->all());
-
-        return redirect('/ListAbonnement')->with('status', 'L\'abonnement a bien été ajouté');
-
-    }
-
     public function ListAbonnement() : View {
+        // $abonnement = Abonnement::orderby('created_at')->get();
         return view('admin.ListAbonnement');
     }
 
-    public function EditCoach() : View {
-        return view('admin.EditCoach');
+    public function ListCoach() : View {
+        return view('admin.ListCoach');
     }
+
+    public function ListSport() : View {
+        return view('admin.ListSport');
+    }
+
+
 }

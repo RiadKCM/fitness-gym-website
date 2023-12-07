@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->unsignedBigInteger('id_sport');
 
-            $table->foreign('id_sport')->references('id')->on('sports')->onDelete('cascade');
+            $table->foreign('id_sport')->references('id')->on('sport')->onDelete('cascade');
         });
     }
 

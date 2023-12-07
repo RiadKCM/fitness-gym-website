@@ -15,10 +15,10 @@ return new class extends Migration
         Schema::create('abonnements', function (Blueprint $table) {
 
             $table->id();
-            $table->string('type_abonnements');
+            $table->string('type_abonnement');
             $table->unsignedBigInteger('prix');
             $table->unsignedBigInteger('duree_validite');
-            $table->string('Description');
+            $table->string('description');
 
         });
     }

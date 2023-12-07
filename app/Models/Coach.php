@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Abonnement extends Model
+class Coach extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'type_abonnement',
-        'prix',
-        'duree_validite',
-        'description'
+        'nom',
+        'prenom'
     ];
-
 }

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seances', function (Blueprint $table) {
+        Schema::create('cours', function (Blueprint $table) {
             $table->id();
             $table->string('type_cours'); // type de la séance. collectif ou individuel
             $table->string('intensite');
@@ -20,8 +20,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_sport');
             $table->unsignedBigInteger('id_coach');
 
-            $table->foreign('id_coach')->references('id')->on('coachs')->onDelete('cascade');
-            $table->foreign('id_sport')->references('id')->on('sports')->onDelete('cascade');
+            $table->foreign('id_coach')->references('id')->on('coach')->onDelete('cascade');
+            $table->foreign('id_sport')->references('id')->on('sport')->onDelete('cascade');
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seances');
+        Schema::dropIfExists('cours');
     }
 };
