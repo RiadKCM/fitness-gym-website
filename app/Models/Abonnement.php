@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Abonnement extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
+        'id',
         'type_abonnement',
         'prix',
-        'duree_validite',
-        'description'
+        'Description',
+        'duree_validite'
     ];
 
+    use HasFactory;
 }

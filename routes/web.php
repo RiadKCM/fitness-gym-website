@@ -2,6 +2,7 @@
 
 <?php
 
+use App\Http\Controllers\AbonnementController;
 use App\Http\Controllers\GoMuscuController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -64,6 +65,15 @@ Route::post('/store',[CoachAdminController::class, 'store'])->name('admin.coach.
 Route::get('/ListSport',[AdminController::class, 'ListSport'])->name('admin.ListSport');
 Route::get('/create',[SportAdminController::class, 'create'])->name('admin.sport.create');
 Route::post('/store',[SportAdminController::class, 'store'])->name('admin.sport.store');
+
+
+// Route pour la méthode 'index'
+Route::get('/abonnements', [AbonnementController::class, 'index']);
+
+// Route pour la méthode 'show''
+Route::get('/', [AbonnementController::class, 'show'])->name('abonnement.show');
+
+
 
 require __DIR__.'/auth.php';
 
