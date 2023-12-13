@@ -41,7 +41,6 @@ class SportAdminController extends Controller
             $sport->save();
             
             return redirect('/ListSport')->with("status",'Le sport a été ajouté avec succès');
-            // dd("coucou");
         }
     }
 

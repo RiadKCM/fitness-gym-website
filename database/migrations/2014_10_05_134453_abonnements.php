@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('prix');
             $table->unsignedBigInteger('duree_validite');
             $table->string('description');
-
+            $table->timestamps();
         });
     }
 

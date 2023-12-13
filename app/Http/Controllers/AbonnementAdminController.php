@@ -32,7 +32,7 @@ class AbonnementAdminController extends Controller
             'type_abonnement'=>'required',
             'prix'=>'required',
             'duree_validite'=>'required',
-            'description'=>'required',
+            'description'=>'required'
         ]);
 
         if($validate){
@@ -41,11 +41,10 @@ class AbonnementAdminController extends Controller
             $abonnement->prix = $request->prix;
             $abonnement->duree_validite = $request->duree_validite;
             $abonnement->description = $request->description;
-
+            
             $abonnement->save();
             
             return redirect('/ListAbonnement')->with("status",'L\'abonnement a été ajouté avec succès');
-            // dd("coucou");
         }
     }
 
@@ -68,9 +67,26 @@ class AbonnementAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'type_abonnement'=>'required',
+            'prix'=>'required',
+            'duree_validite'=>'required',
+            'description'=>'required'
+        ]);
+
+        if($validate){
+            $abonnement = Abonnement::find($request->id);
+            $abonnement->type_abonnement = $request->type_abonnement;
+            $abonnement->prix = $request->prix;
+            $abonnement->duree_validite = $request->duree_validite;
+            $abonnement->description = $request->description;
+            
+            $abonnement->update();
+            
+            return redirect('/ListAbonnement')->with("status",'L\'abonnement a été modifié avec succès');
+        }
     }
 
     /**

@@ -276,7 +276,7 @@
 <!-- Banner Section End -->
 
 <!-- Pricing Section Begin -->
-<section class="pricing-section spad">
+{{-- <section class="pricing-section spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -297,18 +297,16 @@
                             <span>{{ $abonnement->type_abonnement }}</span>
                         </div>
                         <ul>
-                            <li>{{ $abonnement->Description }}</li>
+                            <li>{{ $abonnement->description }}</li>
                         </ul>
                         <a href="#" class="primary-btn pricing-btn">Inscrivez-vous maintenant</a>
                         <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
                     </div>
                 </div>
             @endforeach
-
-
         </div>
     </div>
-</section>
+</section> --}}
 <!-- Pricing Section End -->
 
 <!-- Gallery Section Begin -->

@@ -24,10 +24,10 @@
             <input type="text" placeholder="Type d'abonnement"id="type_abonnement" name="type_abonnement">
         </div>
         <div>
-            <input type="text" placeholder="Prix"id="prix" name="prix">
+            <input type="number" placeholder="Prix"id="prix" name="prix">
         </div>
         <div>
-            <input type="text" placeholder="Durée"id="duree_validite" name="duree_validite">
+            <input type="number" placeholder="Durée"id="duree_validite" name="duree_validite">
         </div>
         <div>
             <textarea type="text" placeholder="Description" id="description" name="description"></textarea>

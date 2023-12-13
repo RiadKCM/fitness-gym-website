@@ -55,23 +55,20 @@ Route::get('/admin',[AdminController::class, 'admin'])->name('admin.admin');
 Route::get('/baseAdmin',[AdminController::class, 'baseAdmin'])->name('admin.baseAdmin');
 
 Route::get('/ListAbonnement',[AdminController::class, 'ListAbonnement'])->name('admin.ListAbonnement');
-Route::get('/create',[AbonnementAdminController::class, 'create'])->name('admin.abonnement.create');
-Route::post('/store',[AbonnementAdminController::class, 'store'])->name('admin.abonnement.store');
+Route::get('/AddAbonnement',[AbonnementAdminController::class, 'create'])->name('admin.abonnement.create');
+Route::post('/AddAbonnement',[AbonnementAdminController::class, 'store'])->name('admin.abonnement.store');
+Route::get('/EditAbonnement/{id}',[AdminController::class, 'EditAbonnement'])->name('admin.EditAbonnement');
+Route::post('/EditAbonnement',[AbonnementAdminController::class, 'update'])->name('admin.abonnement.update');
+
 
 Route::get('/ListCoach',[AdminController::class, 'ListCoach'])->name('admin.ListCoach');
-Route::get('/create',[CoachAdminController::class, 'create'])->name('admin.coach.create');
-Route::post('/store',[CoachAdminController::class, 'store'])->name('admin.coach.store');
+Route::get('/AddCoach',[CoachAdminController::class, 'create'])->name('admin.coach.create');
+Route::post('/AddCoach',[CoachAdminController::class, 'store'])->name('admin.coach.store');
 
 Route::get('/ListSport',[AdminController::class, 'ListSport'])->name('admin.ListSport');
-Route::get('/create',[SportAdminController::class, 'create'])->name('admin.sport.create');
-Route::post('/store',[SportAdminController::class, 'store'])->name('admin.sport.store');
+Route::get('/AddSport',[SportAdminController::class, 'create'])->name('admin.sport.create');
+Route::post('/AddSport',[SportAdminController::class, 'store'])->name('admin.sport.store');
 
-
-// Route pour la méthode 'index'
-Route::get('/abonnements', [AbonnementController::class, 'index']);
-
-// Route pour la méthode 'show''
-Route::get('/', [AbonnementController::class, 'show'])->name('abonnement.show');
 
 
 

@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sports extends Model
 {
-    use HasFactory;
 
+    protected $table = 'sports';
     protected $fillable = [
         'nom_sport',
         'description'
     ];
+
+    use HasFactory;
 }

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->unsignedBigInteger('id_sport');
+            $table->timestamps();
 
             $table->foreign('id_sport')->references('id')->on('sport')->onDelete('cascade');
         });

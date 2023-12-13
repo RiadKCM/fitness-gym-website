@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom_sport');
             $table->string('description');
+            $table->timestamps();
         });
     }
 

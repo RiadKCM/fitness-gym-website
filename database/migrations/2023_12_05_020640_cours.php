@@ -19,6 +19,7 @@ return new class extends Migration
             $table->time('duree');
             $table->unsignedBigInteger('id_sport');
             $table->unsignedBigInteger('id_coach');
+            $table->timestamps();
 
             $table->foreign('id_coach')->references('id')->on('coach')->onDelete('cascade');
             $table->foreign('id_sport')->references('id')->on('sport')->onDelete('cascade');

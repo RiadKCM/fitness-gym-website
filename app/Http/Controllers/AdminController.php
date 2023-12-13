@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Abonnement;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Sports;
 
 class AdminController extends Controller
 {
@@ -16,13 +17,9 @@ class AdminController extends Controller
         return view('admin.baseAdmin');
     }
 
-    public function AddAbonnement() : View {
-        return view('admin.AddAbonnement');
-    }
-
     public function ListAbonnement() : View {
-        // $abonnement = Abonnement::orderby('created_at')->get();
-        return view('admin.ListAbonnement');
+        $abonnements = Abonnement::all();
+        return view('admin.ListAbonnement',compact('abonnements'));
     }
 
     public function ListCoach() : View {
@@ -30,8 +27,12 @@ class AdminController extends Controller
     }
 
     public function ListSport() : View {
-        return view('admin.ListSport');
+        $sports = Sports::all();
+        return view('admin.ListSport',compact('sports'));
     }
 
-
+    public function EditAbonnement($id) : View {
+        $abonnements = Abonnement::find($id);
+        return view('admin.EditAbonnement',compact('abonnements'));
+    }
 }
