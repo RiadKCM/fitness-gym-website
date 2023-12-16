@@ -26,7 +26,7 @@
                     <td class="p-3 text-sm text-white">{{$abonnement->description}}</td>
                     <td>
                         <a href="/EditAbonnement/{{$abonnement->id}}" class="btn btn-info">Modifier</a>
-                        <a href="#" class="btn btn-danger">Supprimer</a>
+                        <a href="/DeleteAbonnement/{{$abonnement->id}}" class="btn btn-danger">Supprimer</a>
                     </td>
                 </tr>
                 @endforeach

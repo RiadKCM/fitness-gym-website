@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->unsignedBigInteger('id_sport');
+            $table->string('photo_path')->nullable();
             $table->timestamps();
-
-            $table->foreign('id_sport')->references('id')->on('sport')->onDelete('cascade');
+            $table->foreign('id_sport')->references('id')->on('sports')->onDelete('cascade');
         });
     }
 

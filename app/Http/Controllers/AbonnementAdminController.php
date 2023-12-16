@@ -20,7 +20,7 @@ class AbonnementAdminController extends Controller
      */
     public function create()
     {
-       return view('admin.AddAbonnement');
+       return view('admin.Abonnement.AddAbonnement');
     }
 
     /**
@@ -51,9 +51,9 @@ class AbonnementAdminController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        
     }
 
     /**

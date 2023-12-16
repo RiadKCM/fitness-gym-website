@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Models\Sports;
 
-class SportAdminController extends Controller
+class UtilisateurAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class SportAdminController extends Controller
      */
     public function create()
     {
-        return view('admin.Sport.AddSport');
+        //
     }
 
     /**
@@ -28,20 +28,7 @@ class SportAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'nom_sport'=>'required',
-            'description'=>'required',
-        ]);
-
-        if($validate){
-            $sport = new Sports();
-            $sport->nom_sport = $request->nom_sport;
-            $sport->description = $request->description;
-
-            $sport->save();
-            
-            return redirect('/ListSport')->with("status",'Le sport a été ajouté avec succès');
-        }
+        //
     }
 
     /**
@@ -66,19 +53,20 @@ class SportAdminController extends Controller
     public function update(Request $request)
     {
         $validate = $request->validate([
-            'nom_sport'=>'required',
-            'description'=>'required',
+            'name'=>'required',
+            'email'=>'required',
+            'password'=>'required',
         ]);
 
         if($validate){
-            $sport = Sports::find($request->id);
-            $sport->nom = $request->nom;
-            $sport->nom_sport = $request->nom_sport;
-            $sport->description = $request->description;
+            $user = User::find($request->id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = $request->password;
             
-            $sport->update();
+            $user->update();
             
-            return redirect('/ListSport')->with("status",'Le sport a été modifié avec succès');
+            return redirect('/ListParticipation')->with("status",'La participation a été modifiée avec succès');
         }
     }
 

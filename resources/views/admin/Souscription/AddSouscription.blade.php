@@ -1,6 +1,6 @@
 @extends('admin.admin')
 
-@section('title2','Ajouter un coach')
+@section('title2','Ajouter une souscription')
 
 @section('content')
 
@@ -18,15 +18,15 @@
 
 
 <div class="text-white"  class="contenu ActiveContenu">
-    <form method="POST" action="{{ route('admin.coach.store') }}">
+    <form method="POST" action="{{ route('admin.souscription.store') }}">
         @csrf
         <div>
-            <input type="text" placeholder="Nom"id="nom" name="nom">
+            <input type="number" placeholder="Utilisateur"id="id_user" name="id_user">
         </div>
         <div>
-            <input type="text" placeholder="Prenom"id="prenom" name="prenom">
+            <input type="number" placeholder="Abonnement"id="id_abonnement" name="id_abonnement">
         </div>
-        <button type="submit">Ajouter un coach</button>
+        <button type="submit">Ajouter une souscription</button>
     </form>
 </div>
 

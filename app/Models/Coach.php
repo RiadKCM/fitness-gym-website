@@ -9,8 +9,16 @@ class Coach extends Model
 {
     use HasFactory;
 
+    protected $table = 'coachs';
     protected $fillable = [
         'nom',
-        'prenom'
+        'prenom',
+        'id_sport',
+        'photo_path',
     ];
+
+    public function sport()
+    {
+        return $this->belongsTo(Sports::class, 'id_sport');
+    }
 }

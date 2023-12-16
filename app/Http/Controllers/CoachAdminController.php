@@ -20,7 +20,7 @@ class CoachAdminController extends Controller
      */
     public function create()
     {
-        return view('admin.AddCoach');
+        return view('admin.Coach.AddCoach');
     }
 
     /**
@@ -28,21 +28,16 @@ class CoachAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'nom'=>'required',
-            'prenom'=>'required',
+        $validateData = $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'id_sport' => 'required'
         ]);
 
-        if($validate){
-            $coach = new Coach();
-            $coach->nom = $request->nom;
-            $coach->prenom = $request->prenom;
-
-            $coach->save();
-            
-            return redirect('/ListCoach')->with("status",'Le coach a été ajouté avec succès');
-            // dd("coucou");
-        }
+        $coach = Coach::create($validateData);
+       
+        return redirect('/ListCoach')->with('status', 'Le coach a été ajouté avec succès');
+        
     }
 
     /**
@@ -64,9 +59,24 @@ class CoachAdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'nom'=>'required',
+            'prenom'=>'required',
+            'id_sport'=>'required'
+        ]);
+
+        if($validate){
+            $coach = Coach::find($request->id);
+            $coach->nom = $request->nom;
+            $coach->prenom = $request->prenom;
+            $coach->id_sport = $request->id_sport;
+            
+            $coach->update();
+            
+            return redirect('/ListCoach')->with("status",'Le coach a été modifié avec succès');
+        }
     }
 
     /**

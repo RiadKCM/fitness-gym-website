@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -46,12 +49,12 @@
     </div>
     <nav class="canvas-menu mobile-menu">
         <ul>
-            <li><a href="./index.html">Accueil</a></li>
-            <li><a href="./about-us.html">A Propos</a></li>
-            <li><a href="./classes.html">Cours</a></li>
-            <li><a href="./services.html">Abonnements</a></li>
-            <li><a href="./team.html">Nos coachs</a></li>
-            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="{{ url('/') }}">Accueil</a></li>
+            <li><a href="{{ url('/about') }}">A Propos</a></li>
+            <li><a href="{{ url('/cours') }}">Cours</a></li>
+            <li><a href="{{ url('/abonnement') }}">Abonnements</a></li>
+            <li><a href="{{ url('/teams') }}">Nos coachs</a></li>
+            <li><a href="{{ url('/contact') }}">Contact</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -72,12 +75,12 @@
             <div class="col-lg-6">
                 <nav class="nav-menu">
                     <ul>
-                        <li class="active"><a href="./index.html">Accueil</a></li>
-                        <li><a href="./about-us.html">A Propos</a></li>
-                        <li><a href="./class-details.html">Cours</a></li>
-                        <li><a href="./services.html">Abonnements</a></li>
-                        <li><a href="./team.html">Nos coachs</a></li>
-                        <li><a href="./contact.html">Contact</a></li>
+                        <li><a href="{{ url('/') }}">Accueil</a></li>
+                        <li><a href="{{ url('/about') }}">A Propos</a></li>
+                        <li><a href="{{ url('/cours') }}">Cours</a></li>
+                        <li><a href="{{ url('/abonnement') }}">Abonnements</a></li>
+                        <li><a href="{{ url('/teams') }}">Nos coachs</a></li>
+                        <li><a href="{{ url('/contact') }}">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -86,10 +89,102 @@
                     <div class="to-search search-switch">
                         <i class="fa fa-search"></i>
                     </div>
+
                     <div class="to-social">
-                        <a href="{{ route('login') }}">Connexion</a>
-                        <a href="{{ route('register') }}">S'inscrire</a>
+                        @auth
+                            <!-- Menu déroulant pour l'utilisateur connecté -->
+                            <div class="dropdown">
+                                <button class="dropbtn">{{ Auth::user()->name }} <span class="caret">&#9660;</span></button>
+                                <div class="dropdown-content" style="display:none;">
+                                    <a href="{{ route('profile.edit') }}">Profile</a>
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Log Out
+                                    </a>
+                                </div>
+                            </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        @else
+                            <!-- Liens pour l'utilisateur non connecté -->
+                            <a href="{{ route('login') }}">Connexion</a>
+                            <a href="{{ route('register') }}">S'inscrire</a>
+                        @endauth
                     </div>
+
+                    <style>
+                        /* Style pour le menu déroulant */
+                        /* Style pour le menu déroulant */
+                        .dropdown {
+                            position: relative;
+                            display: inline-block;
+                        }
+
+                        .dropbtn {
+                            background-color: #4F4F4F; /* Dark grey background */
+                            color: white; /* White text color */
+                            padding: 8px;
+                            font-size: 16px;
+                            border: none;
+                            cursor: pointer;
+                            text-align: left;
+                            white-space: nowrap;
+                        }
+
+                        .dropdown-content {
+                            background-color: #4F4F4F; /* Dark grey background */
+                            color: white; /* White text color */
+                            display: none;
+                            position: absolute;
+                            left: 0;
+                            right: 0;
+                            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                            z-index: 1;
+                            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+                        }
+
+                        .dropdown-content a {
+                            color: white; /* White text color */
+                            padding: 1px; /* Same padding as .dropbtn for alignment */
+                            text-decoration: none;
+                            display: block;
+                            box-sizing: border-box; /* Include padding in the element's total width */
+                        }
+
+                        /* Affichage du menu au survol */
+                        .dropdown:hover .dropdown-content {
+                            display: block;
+                        }
+
+                        /* Style pour le nom de l'utilisateur et la flèche */
+                        .dropbtn .caret {
+                            border-top: 4px solid white; /* Style de la flèche */
+                            margin-left: 5px;
+                        }
+
+                        /* Style pour changer la flèche en mode survol */
+                        .dropdown:hover .dropbtn .caret {
+                            border-top: 4px solid #aaa; /* Light grey color for the arrow on hover */
+                        }
+
+                    </style>
+
+                    <script>
+                        // Script pour gérer l'affichage du menu déroulant
+                        document.addEventListener('DOMContentLoaded', (event) => {
+                            const dropdown = document.querySelector('.dropdown');
+                            dropdown.addEventListener('click', function(event) {
+                                this.querySelector('.dropdown-content').style.display = 'block';
+                            });
+                            window.addEventListener('click', function(e){
+                                if (!dropdown.contains(e.target)){
+                                    dropdown.querySelector('.dropdown-content').style.display = 'none';
+                                }
+                            });
+                        });
+                    </script>
+
                 </div>
             </div>
         </div>
@@ -100,340 +195,7 @@
 </header>
 <!-- Header End -->
 
-<!-- Hero Section Begin -->
-<section class="hero-section">
-    <div class="hs-slider owl-carousel">
-        <div class="hs-item set-bg" data-setbg="img/hero/hero-1.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-6">
-                        <div class="hi-text">
-                            <span>Prends soin de ton corps</span>
-                            <h1>Sois <strong>fort</strong> Entraîne-toi !</h1>
-                            <a href="#" class="primary-btn">Plus d'infos</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hs-item set-bg" data-setbg="img/hero/hero-2.jpg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 offset-lg-6">
-                        <div class="hi-text">
-                            <span>Prends soin de ton corps</span>
-                            <h1>Sois <strong>fort</strong> Entraîne-toi !</h1>
-                            <a href="#" class="primary-btn">Plus d'infos</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Hero Section End -->
-
-<!-- ChoseUs Section Begin -->
-<section class="choseus-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <span>Pourquoi nous choisir ?</span>
-                    <h2>REPOUSSEZ VOS LIMITES</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-034-stationary-bike"></span>
-                    <h4>Équipement moderne</h4>
-                    <p>Les salles de sport modernes proposent des équipements avancés pour un entraînement efficace et motivant.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-033-juice"></span>
-                    <h4>Plan nutritionnel sain</h4>
-                    <p>
-                        Un plan nutritionnel sain est essentiel pour maintenir une alimentation équilibrée,
-                        fournir à votre corps les nutriments dont il a besoin, et favoriser une meilleure santé globale.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-002-dumbell"></span>
-                    <h4>Plan d'entraînement professionnel</h4>
-                    <p>Un plan d'entraînement professionnel est une feuille de route stratégique conçue pour développer
-                        les compétences et les connaissances nécessaires à une carrière réussie.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="cs-item">
-                    <span class="flaticon-014-heart-beat"></span>
-                    <h4>Adapté à vos besoins uniques</h4>
-                    <p>Notre salle de sport propose des programmes d'entraînement adaptés
-                        à vos besoins uniques pour vous aider à atteindre vos objectifs de fitness personnels.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ChoseUs Section End -->
-
-<!-- Classes Section Begin -->
-<section class="classes-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <span>Nos Cours</span>
-                    <h2>CE QUE NOUS POUVONS VOUS OFFRIR</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="{{ url('img/classes/class-1.jpg') }}" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>FORCE</span>
-                        <h5>La musculation</h5>
-                        <a href="#"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="{{ url('img/classes/class-2.jpg') }}" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>Cardio</span>
-                        <h5>Cyclisme en salle</h5>
-                        <a href="#"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="{{ url('img/classes/class-3.jpg')}}" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>FORCE</span>
-                        <h5>Kettlebell puissance</h5>
-                        <a href="#"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="{{ url('img/classes/class-4.jpg') }}" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>Cardio</span>
-                        <h4>Cyclisme en salle</h4>
-                        <a href="#"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="class-item">
-                    <div class="ci-pic">
-                        <img src="{{ url('img/classes/class-5.jpg') }}" alt="">
-                    </div>
-                    <div class="ci-text">
-                        <span>Entraînement</span>
-                        <h4>Boxe</h4>
-                        <a href="#"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ChoseUs Section End -->
-
-<!-- Banner Section Begin -->
-<section class="banner-section set-bg" data-setbg="img/banner-bg.jpg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="bs-text">
-                    <h2>Inscrivez-vous dès maintenant pour obtenir plus d'offres</h2>
-                    <div class="bt-tips">Là où la santé, la beauté et la forme se rencontrent.</div>
-                    <a href="#" class="primary-btn  btn-normal">Inscription à un cours</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Banner Section End -->
-
-<!-- Pricing Section Begin -->
-{{-- <section class="pricing-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <span>Nos Plans</span>
-                    <h2>Choisissez votre plan tarifaire</h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            @foreach($abonnements as $abonnement)
-                <div class="col-lg-4 col-md-8">
-                    <div class="ps-item">
-                        <h3>Blablbablaa</h3>
-                        <div class="pi-price">
-                            <h2>{{ $abonnement->prix }}</h2>
-                            <span>{{ $abonnement->type_abonnement }}</span>
-                        </div>
-                        <ul>
-                            <li>{{ $abonnement->description }}</li>
-                        </ul>
-                        <a href="#" class="primary-btn pricing-btn">Inscrivez-vous maintenant</a>
-                        <a href="#" class="thumb-icon"><i class="fa fa-picture-o"></i></a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </div>
-</section> --}}
-<!-- Pricing Section End -->
-
-<!-- Gallery Section Begin -->
-<div class="gallery-section">
-    <div class="gallery">
-        <div class="grid-sizer"></div>
-        <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/gallery-1.jpg">
-            <a href="{{ url('img/gallery/gallery-1.jpg') }}" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
-        </div>
-        <div class="gs-item set-bg" data-setbg="img/gallery/gallery-2.jpg">
-            <a href="{{ url('img/gallery/gallery-2.jpg') }}" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
-        </div>
-        <div class="gs-item set-bg" data-setbg="img/gallery/gallery-3.jpg">
-            <a href="{{ url('img/gallery/gallery-3.jpg') }}" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
-        </div>
-        <div class="gs-item set-bg" data-setbg="img/gallery/gallery-4.jpg">
-            <a href="{{ url('img/gallery/gallery-4.jpg') }}" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
-        </div>
-        <div class="gs-item set-bg" data-setbg="img/gallery/gallery-5.jpg">
-            <a href="{{ url('img/gallery/gallery-5.jpg') }}" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
-        </div>
-        <div class="gs-item grid-wide set-bg" data-setbg="img/gallery/gallery-6.jpg">
-            <a href="{{ url('img/gallery/gallery-6.jpg') }}" class="thumb-icon image-popup"><i class="fa fa-picture-o"></i></a>
-        </div>
-    </div>
-</div>
-<!-- Gallery Section End -->
-
-<!-- Team Section Begin -->
-<section class="team-section spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="team-title">
-                    <div class="section-title">
-                        <span>Our Team</span>
-                        <h2>TRAIN WITH EXPERTS</h2>
-                    </div>
-                    <a href="#" class="primary-btn btn-normal appoinment-btn">appointment</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="ts-slider owl-carousel">
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-1.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-2.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-3.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-4.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-6.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Team Section End -->
-
-<!-- Get In Touch Section Begin -->
-<div class="gettouch-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="gt-text">
-                    <i class="fa fa-map-marker"></i>
-                    <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="gt-text">
-                    <i class="fa fa-mobile"></i>
-                    <ul>
-                        <li>125-711-811</li>
-                        <li>125-668-886</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="gt-text email">
-                    <i class="fa fa-envelope"></i>
-                    <p>Support.gymcenter@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Get In Touch Section End -->
+@yield('content')
 
 <!-- Footer Section Begin -->
 <section class="footer-section">
