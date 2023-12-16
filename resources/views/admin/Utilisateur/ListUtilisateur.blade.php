@@ -23,8 +23,8 @@
                     <td class="p-3 text-sm text-white">{{$user->name}}</td>
                     <td class="p-3 text-sm text-white">{{$user->email}}</td>
                     <td>
-                        <a href="/EditAbonnement/{{$user->id}}" class="btn btn-info">Modifier</a>
-                        <a href="#" class="btn btn-danger">Supprimer</a>
+                        <a href="/EditUtilisateur/{{$user->id}}" class="btn btn-info">Modifier</a>
+                        <a href="/DeleteUtilisateur/{{$user->id}}" class="btn btn-danger">Supprimer</a>
                     </td>
                 </tr>
                 @endforeach

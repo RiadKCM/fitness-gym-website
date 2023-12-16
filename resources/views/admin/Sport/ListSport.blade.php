@@ -24,8 +24,8 @@
                     <td class="p-3 text-sm text-white">{{$sport->nom_sport}}</td>
                     <td class="p-3 text-sm text-white">{{$sport->description}}</td>
                     <td class="">
-                        <a href="/" class="btn btn-info">Modifier</a>
-                        <a href="#" class="btn btn-danger">Supprimer</a>
+                        <a href="/EditSport/{{$sport->id_sport}}" class="btn btn-info">Modifier</a>
+                        <a href="/DeleteSport/{{$sport->id_sport}}" class="btn btn-danger">Supprimer</a>
                     </td>
                 </tr>
                 @endforeach

@@ -20,11 +20,11 @@
             <tr class="hover:bg-gray-100">
                 <td class="p-3 text-sm text-white">{{$participation->id}}</td>
                 <td class="p-3 text-sm text-white">{{$participation->date_participation}}</td>
-                <td class="p-3 text-sm text-white">{{$participation->id_user}} an</td>
+                <td class="p-3 text-sm text-white">{{$participation->id_user}}</td>
                 <td class="p-3 text-sm text-white">{{$participation->id_cours}}</td>
                 <td>
-                    <a href="#" class="btn btn-info">Modifier</a>
-                    <a href="#" class="btn btn-danger">Supprimer</a>
+                    <a href="/EditParticipation/{{$participation->id}}" class="btn btn-info">Modifier</a>
+                    <a href="/DeleteParticipation/{{$participation->id}}" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
             @endforeach

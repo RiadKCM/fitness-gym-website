@@ -21,8 +21,8 @@
                 <td class="p-3 text-sm text-white">{{$souscription->id_user}}</td>
                 <td class="p-3 text-sm text-white">{{$souscription->id_abonnement}}</td>
                 <td>
-                    <a href="#" class="btn btn-info">Modifier</a>
-                    <a href="#" class="btn btn-danger">Supprimer</a>
+                    <a href="/EditSouscription/{{$souscription->id}}" class="btn btn-info">Modifier</a>
+                    <a href="/DeleteSouscription/{{$souscription->id}}" class="btn btn-danger">Supprimer</a>
                 </td>
             </tr>
             @endforeach

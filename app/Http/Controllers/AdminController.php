@@ -47,7 +47,7 @@ class AdminController extends Controller
 
     public function EditCoach($id) : View {
         $coachs = Coach::find($id);
-        return view('admin.Coach.EditAbonnement',compact('coachs'));
+        return view('admin.Coach.EditCoach',compact('coachs'));
     }
 
     public function DeleteCoach($id){

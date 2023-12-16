@@ -31,7 +31,8 @@ class CoachAdminController extends Controller
         $validateData = $request->validate([
             'nom' => 'required',
             'prenom' => 'required',
-            'id_sport' => 'required'
+            'id_sport' => 'required',
+            'photo_path'=>'required'
         ]);
 
         $coach = Coach::create($validateData);
@@ -64,7 +65,8 @@ class CoachAdminController extends Controller
         $validate = $request->validate([
             'nom'=>'required',
             'prenom'=>'required',
-            'id_sport'=>'required'
+            'id_sport'=>'required',
+            'photo_path'=>'required'
         ]);
 
         if($validate){
@@ -72,6 +74,7 @@ class CoachAdminController extends Controller
             $coach->nom = $request->nom;
             $coach->prenom = $request->prenom;
             $coach->id_sport = $request->id_sport;
+            $coach->photo_path = $request->photo_path;
             
             $coach->update();
             
