@@ -35,7 +35,7 @@ class SouscriptionController extends Controller
     
         $souscription = Souscription::create($validatedData);
         
-        return redirect('/')->with("status",'Le coach a été ajouté avec succès');
+        return redirect('/')->with("status",'La souscription a été effectuée avec succès');
     }
 
     /**
@@ -66,7 +66,26 @@ class SouscriptionController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
+    { 
         //
+    }
+
+    public function souscrire(Request $request, $id_abonnement)
+    {
+        $id_user = auth()->id();
+
+        $souscriptionExistante = Souscription::where('id_user', $id_user)->exists();
+
+        if (!$souscriptionExistante) {
+            // L'utilisateur n'a pas encore souscrit à cet abonnement, ajoutez la souscription
+            $souscription = new Souscription();
+            $souscription->id_user = $id_user;
+            $souscription->id_abonnement = $id_abonnement;
+            $souscription->save();
+
+            return redirect()->back()->with('success', 'Souscription effectuée avec succès');
+        } else {
+            return redirect()->back()->with('error', 'Vous avez déjà souscrit à cet abonnement');
+        }
     }
 }

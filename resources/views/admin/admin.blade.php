@@ -5,37 +5,37 @@
 @section('content')
 <div class="flex flex-wrap justify-content-center ">
     <form action="">
-        <button style="width: 150px;">
+        <x-primary-button style="width: 150px;">
             <a href="{{ route('admin.ListUtilisateur') }}" class="text-white">Utilisateur</a>
-        </button>
+        </x-primary-button>
 
-        <button style="width: 150px;">
+        <x-primary-button style="width: 150px;">
             <a href="{{ route('admin.ListCoach') }}" class="text-white">Coach</a>
-        </button>
+        </x-primary-button>
 
-        <button style="width: 150px;">
+        <x-primary-button style="width: 150px;">
             <a href="{{ route('admin.ListAbonnement') }}" class="text-white">Abonnement</a>
-        </button>
+        </x-primary-button>
     </form>
 <br>
     <form action="">
-        <button style="width: 150px;">
+        <x-primary-button style="width: 150px;">
             <a href="{{ route('admin.ListSport') }}" class="text-white">Sport</a>
-        </button>
+        </x-primary-button>
 
-        <button style="width: 150px;">
+        <x-primary-button style="width: 150px;">
             <a href="{{ route('admin.ListSouscription') }}" class="text-white">Souscription</a>
-        </button>
+        </x-primary-button>
 
-        <button style="width: 150px;">
+        <x-primary-button style="width: 150px;">
             <a href="{{ route('admin.ListCours') }}" class="text-white">Cours</a>
-        </button>
+        </x-primary-button>
     </form>
 <br>
     <form action="">
-        <button style="width: 150px;">
+        <x-primary-button style="width: 150px;">
             <a href="{{ route('admin.ListParticipation') }}" class="text-white">Participation</a>
-        </button>
+        </x-primary-button>
     </form>
 </div>
 @endsection

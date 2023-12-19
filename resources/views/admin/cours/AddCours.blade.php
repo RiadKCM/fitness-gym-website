@@ -30,13 +30,13 @@
             <input type="text" placeholder="Capacité"id="capacite" name="capacite">
         </div>
         <div>
-            <input type="text" placeholder="Durée"id="duree" name="duree">
+            <input type="time" placeholder="Durée"id="duree" name="duree">
         </div>
         <div>
-            <input type="text" placeholder="Sport"id="id_sport" name="id_sport">
+            <input type="number" placeholder="Sport"id="id_sport" name="id_sport">
         </div>
         <div>
-            <input type="text" placeholder="Coach"id="id_coach" name="id_coach">
+            <input type="number" placeholder="Coach"id="id_coach" name="id_coach">
         </div>
         <button type="submit">Ajouter un cours</button>
     </form>

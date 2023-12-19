@@ -16,5 +16,12 @@ class Abonnement extends Model
         'duree_validite'
     ];
 
+
+    public function souscription(){
+        return $this->hasMany(Souscription::class, 'id_abonnement');
+    }
+
+
+
     use HasFactory;
 }

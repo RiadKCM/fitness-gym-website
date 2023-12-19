@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AbonnementAdminController;
 use App\Http\Controllers\CoachAdminController;
+use App\Http\Controllers\CoachController;
 use App\Http\Controllers\SportAdminController;
 use App\Http\Controllers\UtilisateurAdminController;
 use App\Http\Controllers\SouscriptionAdminController;
@@ -40,7 +41,19 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    // Souscription
+    Route::post('/souscrire/{id_abonnement}', [SouscriptionController::class, 'souscrire'])->name('souscrire');
+
+    // Gestion
+    Route::get('/gestion', [AbonnementController::class,'create'])->name('gestion');
+    Route::delete('/resiliation/{id}',[AbonnementController::class, 'destroy'])->name('destroy.souscription');
+
+
     Route::middleware(['admin'])->group(function (){
+        Route::get('/admin',[AdminController::class, 'admin'])->name('admin.admin');
+
+        Route::get('/baseAdmin',[AdminController::class, 'baseAdmin'])->name('admin.baseAdmin');
+
         Route::get('/ListAbonnement',[AdminController::class, 'ListAbonnement'])->name('admin.ListAbonnement');
         Route::get('/AddAbonnement',[AbonnementAdminController::class, 'create'])->name('admin.abonnement.create');
         Route::post('/AddAbonnement',[AbonnementAdminController::class, 'store'])->name('admin.abonnement.store');
@@ -93,7 +106,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/EditCours/{id}',[AdminController::class, 'EditCours'])->name('admin.EditCours');
         Route::post('/EditCours',[CoursAdminController::class, 'update'])->name('admin.cours.update');
         Route::get('/DeleteCours/{id}',[AdminController::class, 'DeleteCours'])->name('admin.DeleteCours');
-
     });
 });
 
@@ -110,9 +122,7 @@ Route::get('/cours',function (){
     return view('Muscu.cours');
 })->name('Muscu.cours');
 
-Route::get('/teams',function (){
-    return view('Muscu.teams');
-})->name('Muscu.teams');
+Route::get('/teams',[CoachController::class,'index' ])->name('Muscu.teams');
 
 Route::get('/contact',function (){
     return view('Muscu.contact');
@@ -128,11 +138,7 @@ Route::get('/horaire',[GoMuscuController::class, 'horaire'])->name('Muscu.horair
 
 Route::get('/club',[GoMuscuController::class, 'club'])->name('Muscu.club');
 
-Route::get('/admin',[AdminController::class, 'admin'])->name('admin.admin');
-
-Route::get('/baseAdmin',[AdminController::class, 'baseAdmin'])->name('admin.baseAdmin');
-
-
+        
 
 
 

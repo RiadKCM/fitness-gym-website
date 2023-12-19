@@ -28,14 +28,30 @@ class CoachAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $validateData = $request->validate([
-            'nom' => 'required',
-            'prenom' => 'required',
-            'id_sport' => 'required',
-            'photo_path'=>'required'
-        ]);
+        // $validateData = $request->validate([
+        //     'nom' => 'required',
+        //     'prenom' => 'required',
+        //     'id_sport' => 'required',
+        //     'photo_path'=>'required'
+        // ]);
 
-        $coach = Coach::create($validateData);
+        // $request->file('image')->store('/public/images');
+
+        // $coach = Coach::create($validateData);
+        
+
+        $name = $request->file('photo_path')->getClientOriginalName();
+        $request->file('photo_path')->storeAs('public/images/', $name);
+        
+        $coach = new Coach();
+        $coach->nom = $request->nom;
+        $coach->prenom = $request->prenom;
+        $coach->id_sport = $request->id_sport;
+        $coach->photo_path = $name;
+        
+        $coach->save();
+        
+            
        
         return redirect('/ListCoach')->with('status', 'Le coach a été ajouté avec succès');
         

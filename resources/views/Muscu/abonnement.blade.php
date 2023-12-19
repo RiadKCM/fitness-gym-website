@@ -112,29 +112,28 @@
                         <span>Nos Plans</span>
                         <h2>Choisissez votre plan tarifaire</h2>
                     </div>
-                </div>
+                </div> 
             </div>
-                <div class="row justify-content-center">
-                    @foreach($abonnements as $abonnement)
-                       <form method="POST" action="{{ route('create-souscription') }}">
-                           @csrf
-                            <div class="col-lg-4 col-md-8">
-                                <div class="ps-item">
-                                    <h3>Abonnement</h3>
-                                    <div class="pi-price">
-                                        <h2>{{ $abonnement->prix }}€</h2>
-                                        <span>{{ $abonnement->type_abonnement }}</span>
-                                    </div>
-                                    <ul>
-                                        <li>{{ $abonnement->Description }}</li>
-                                    </ul>
-                                    <input type="hidden" value="{{ $abonnement->id }}" name="abonnement_id" id="abonnement_id">
-                                    <input type="submit" class="primary-btn pricing-btn" value="Inscrivez-vous dès maintenant !">
-                                </div>
+            <div class="row justify-content-center">
+                @foreach($abonnements as $abonnement)
+                    <div class="col-lg-4 col-md-8">
+                        <div class="ps-item">
+                            <h3>Abonnement</h3>
+                            <div class="pi-price">
+                                <h2>{{ $abonnement->prix }}€</h2>
+                                <span>{{ $abonnement->type_abonnement }}</span>
                             </div>
-                       </form>
-                    @endforeach
-                </div>
+                            <ul>
+                                <li>{{ $abonnement->description }}</li>
+                            </ul>
+                            <form method="POST" action="{{ route('souscrire', ['id_abonnement' => $abonnement->id]) }}">
+                                @csrf
+                                <button type="submit" class="primary-btn">Inscrivez-vous maintenant</button>
+                            </form>                        
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </section>
     <!-- Pricing Section End -->

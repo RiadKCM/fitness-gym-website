@@ -40,24 +40,16 @@
             <i class="fa fa-search"></i>
         </div>
         <nav class="canvas-menu mobile-menu">
-            <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about-us.html">About Us</a></li>
-                <li><a href="./class-details.html">Classes</a></li>
-                <li><a href="./services.html">Services</a></li>
-                <li><a href="./team.html">Our Team</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="dropdown">
-                        <li><a href="./about-us.html">About us</a></li>
-                        <li><a href="./class-timetable.html">Classes timetable</a></li>
-                        <li><a href="./bmi-calculator.html">Bmi calculate</a></li>
-                        <li><a href="./team.html">Our team</a></li>
-                        <li><a href="./gallery.html">Gallery</a></li>
-                        <li><a href="./blog.html">Our blog</a></li>
-                        <li><a href="./404.html">404</a></li>
-                    </ul>
-                </li>
-                <li><a href="./contact.html">Contact</a></li>
+            <ul>              
+                <li><a href="{{ url('/') }}">Accueil</a></li>
+                <li><a href="{{ url('/about') }}">A Propos</a></li>
+                <li><a href="{{ url('/cours') }}">Cours</a></li>
+                <li><a href="{{ url('/abonnement') }}">Abonnements</a></li>
+                <li><a href="{{ url('/teams') }}">Nos coachs</a></li>
+                <li><a href="{{ url('/contact') }}">Contact</a></li>
+                @if(auth()->user())
+                <li><a href="{{ url('/gestion') }}">Gestion</a></li>
+                @endif
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -78,23 +70,15 @@
                 <div class="col-lg-6">
                     <nav class="nav-menu">
                         <ul>
-                            <li><a href="./index.html">Home</a></li>
-                            <li><a href="./about-us.html">About Us</a></li>
-                            <li><a href="./class-details.html">Classes</a></li>
-                            <li><a href="./services.html">Services</a></li>
-                            <li><a href="./team.html">Our Team</a></li>
-                            <li class="active"><a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="./about-us.html">About us</a></li>
-                                    <li><a href="./class-timetable.html">Classes timetable</a></li>
-                                    <li><a href="./bmi-calculator.html">Bmi calculate</a></li>
-                                    <li><a href="./team.html">Our team</a></li>
-                                    <li><a href="./gallery.html">Gallery</a></li>
-                                    <li><a href="./blog.html">Our blog</a></li>
-                                    <li><a href="./404.html">404</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="{{ url('/') }}">Accueil</a></li>
+                            <li><a href="{{ url('/about') }}">A Propos</a></li>
+                            <li><a href="{{ url('/cours') }}">Cours</a></li>
+                            <li><a href="{{ url('/abonnement') }}">Abonnements</a></li>
+                            <li><a href="{{ url('/teams') }}">Nos coachs</a></li>
+                            <li><a href="{{ url('/contact') }}">Contact</a></li>
+                            @if(auth()->user())
+                            <li><a href="{{ url('/gestion') }}">Gestion</a></li>
+                            @endif
                         </ul>
                     </nav>
                 </div>
@@ -119,14 +103,12 @@
                         <h3>@yield('title2','Accès administrateur')</h3>
                         <br>
                             <div class="leave-comment">
-                                <!-- <ul>
-                                <button type="submit">Abonnement</button>
-                                <button type="submit">Coach</button>
-                                <button type="submit">Réservation</button>
-                                </ul> -->
-                                <div class="leave-comment">
-                                    @yield('content')
-                                </div>
+                                <div class="leave-comment" style="display: flex; flex-direction: column; align-items: center;">
+                                    <div style="flex: 1;">
+                                        @yield('content')
+                                    </div>
+                                    <a href='{{ route('admin.admin') }}' style="align-self: flex-end;">Administrateur</a>
+                                </div>                                
                             </div>
                         </div>
                     </div>

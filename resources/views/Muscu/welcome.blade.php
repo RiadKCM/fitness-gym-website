@@ -1,6 +1,3 @@
-
-
-
 @extends('base')
 
 @section('content')
@@ -192,18 +189,21 @@
         </div>
 
         <div class="row justify-content-center">
-            @foreach($abonnements as $Abonnement)
+            @foreach($abonnements as $abonnement)
                 <div class="col-lg-4 col-md-8">
                     <div class="ps-item">
                         <h3>Abonnement</h3>
                         <div class="pi-price">
-                            <h2>{{ $Abonnement->prix }}€</h2>
-                            <span>{{ $Abonnement->type_abonnement }}</span>
+                            <h2>{{ $abonnement->prix }}€</h2>
+                            <span>{{ $abonnement->type_abonnement }}</span>
                         </div>
                         <ul>
-                            <li>{{ $Abonnement->Description }}</li>
+                            <li>{{ $abonnement->description }}</li>
                         </ul>
-                        <a href="#" class="primary-btn pricing-btn">Inscrivez-vous maintenant</a>
+                        <form method="POST" action="{{ route('souscrire', ['id_abonnement' => $abonnement->id]) }}">
+                            @csrf
+                            <button type="submit" class="primary-btn" >Inscrivez-vous maintenant</button>
+                        </form>                        
                     </div>
                 </div>
             @endforeach
@@ -241,7 +241,7 @@
 <!-- Team Section Begin -->
 <section class="team-section spad">
     <div class="container">
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-lg-12">
                 <div class="team-title">
                     <div class="section-title">
@@ -251,57 +251,19 @@
                     <a href="#" class="primary-btn btn-normal appoinment-btn">appointment</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="ts-slider owl-carousel">
+                @foreach($coachs as $coach)
                 <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-1.jpg">
+                    <div class="ts-item set-bg" data-setbg="{{ asset('storage/images/' . $coach->photo_path) }}">
                         <div class="ts_text">
-                            <h4>Athart Rachel</h4>
+                            <h4>{{ $coach->nom }} {{ $coach->prenom }}</h4>
                             <span>Gym Trainer</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-2.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-3.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-4.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-5.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ts-item set-bg" data-setbg="img/team/team-6.jpg">
-                        <div class="ts_text">
-                            <h4>Athart Rachel</h4>
-                            <span>Gym Trainer</span>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

@@ -21,13 +21,13 @@
     <form method="POST" action="{{ route('admin.participation.store') }}">
         @csrf
         <div>
-            <input type="text" placeholder="Date de participation"id="date_participation" name="date_participation">
+            <input type="datetime-local" placeholder="Date de participation" id="date_participation" name="date_participation">
         </div>
         <div>
-            <input type="text" placeholder="Utilisateur"id="id_user" name="id_user">
+            <input type="number" placeholder="Utilisateur" id="id_user" name="id_user">
         </div>
         <div>
-            <input type="text" placeholder="Cours"id="id_cours" name="id_cours">
+            <input type="number" placeholder="Cours" id="id_cours" name="id_cours">
         </div>
         <button type="submit">Ajouter une participation</button>
     </form>

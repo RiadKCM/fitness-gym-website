@@ -25,19 +25,12 @@
     <div class="container">
         <div class="row">
             @foreach($coachs as $coach)
-                <div class="col-lg-4 col-sm-6">
+                <div class="col-lg-3 col-sm-6">
                     <div class="ts-item">
-                        <img src="{{ asset($coach->photo_path) }}" alt="{{ $coach->nom }} {{ $coach->prenom }}">
+                        <img src="{{ asset('storage/images/' . $coach->photo_path) }}" alt="{{ $coach->nom }} {{ $coach->prenom }}">
                         <div class="ts_text">
                             <h4>{{ $coach->nom }} {{ $coach->prenom }}</h4>
                             <span>Gym Trainer</span>
-                            <div class="tt_social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,6 +38,9 @@
         </div>
     </div>
 </section>
+
+
+
 <!-- Team Section End -->
 
 <!-- Get In Touch Section Begin -->

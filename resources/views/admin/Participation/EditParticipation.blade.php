@@ -22,7 +22,7 @@
         @csrf
         <input type="text" placeholder="id"id="id" name="id" value="{{ $participations ->id }}"> 
         <div>
-            <input type="text" placeholder="Date de participation"id="date_participation" name="date_participation" value="{{ $participations->nom }}">
+            <input type="text" placeholder="Date de participation"id="date_participation" name="date_participation" value="{{ $participations->date_participation }}">
         </div>
         <div>
             <input type="text" placeholder="Utilisateur"id="id_user" name="id_user" value="{{ $participations ->id_user }}"> 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Abonnement;
+use App\Models\Souscription;
+use App\Models\Coach;
 
 class AbonnementController extends Controller
 {
@@ -21,7 +23,12 @@ class AbonnementController extends Controller
      */
     public function create()
     {
-        //
+        $abonnementUtilisateur = Abonnement::join('souscription', 'abonnements.id', '=', 'souscription.id_abonnement')
+        ->join('users', 'souscription.id_user', '=', 'users.id')
+        ->where('users.id', auth()->user()->id)
+        ->select('abonnements.*')
+        ->first();
+        return view('Muscu.gestion',compact('abonnementUtilisateur'));
     }
 
     /**
@@ -38,7 +45,14 @@ class AbonnementController extends Controller
     public function show()
     {
         $abonnements = Abonnement::all();
-        return view('welcome', ['abonnements' => $abonnements]);
+        $coachs = Coach::all();
+        //$id_abonnement = 1;
+    
+        return view('Muscu.welcome', [
+            'abonnements' => $abonnements,
+            'coachs' => $coachs
+            //'id_abonnement' => $id_abonnement,
+        ]);
     }
 
     /**
@@ -60,8 +74,18 @@ class AbonnementController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $souscription = Souscription::where('id_user', auth()->user()->id)
+                                    ->where('id_abonnement', $id)
+                                    ->first();
+
+        if ($souscription) {
+            $souscription->delete();
+
+            return redirect()->route('gestion')->with('success', 'Abonnement résilié avec succès.');
+        }
+
+        return redirect()->back()->with('error', 'Erreur lors de la résiliation de l\'abonnement.');
     }
 }

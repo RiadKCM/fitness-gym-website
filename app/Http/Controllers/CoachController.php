@@ -14,7 +14,6 @@ class CoachController extends Controller
     {
         $coachs = Coach::all(); // Récupérez tous les coachs depuis la base de données
 
-        dd($coachs);
         return view('Muscu.teams', compact('coachs')); // Transmettez les données à la vue
     }
 

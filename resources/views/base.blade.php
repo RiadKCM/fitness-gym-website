@@ -1,8 +1,5 @@
-
-
-
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +7,7 @@
     <meta name="keywords" content="Gym, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Gym | Template</title>
+    <title>Go-Muscu</title>
 
     <!-- Google Font -->
     <link href="{{ url('https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap') }}" rel="stylesheet">
@@ -67,7 +64,7 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="logo">
-                    <a href="./index.html">
+                    <a href='/'>
                         <img src="{{ url('img/logo.png') }}" alt="">
                     </a>
                 </div>
@@ -81,6 +78,12 @@
                         <li><a href="{{ url('/abonnement') }}">Abonnements</a></li>
                         <li><a href="{{ url('/teams') }}">Nos coachs</a></li>
                         <li><a href="{{ url('/contact') }}">Contact</a></li>
+                        @if(auth()->check() && auth()->user() && auth()->user()->is_admin == 1)
+                        <li><a href="{{ url('/admin') }}">Administrateur</a></li>
+                        @endif
+                        @if(auth()->user())
+                        <li><a href="{{ url('/gestion') }}">Gestion</a></li>
+                        @endif
                     </ul>
                 </nav>
             </div>
@@ -204,7 +207,7 @@
             <div class="col-lg-4">
                 <div class="fs-about">
                     <div class="fa-logo">
-                        <a href="#"><img src="{{ url('img/logo.png') }}" alt=""></a>
+                        <a href="/"><img src="{{ url('img/logo.png') }}" alt=""></a>
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore dolore magna aliqua endisse ultrices gravida lorem.</p>
@@ -298,3 +301,4 @@
 </body>
 
 </html>
+

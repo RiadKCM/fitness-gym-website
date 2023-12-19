@@ -11,7 +11,7 @@
                 <th class="w-10 p-3 text-sm font-semibold tracking-wide text-center">ID</th>
                 <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">Date de participation</th>
                 <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">Utilisateur</th>
-                <th class="w-50 p-3 text-sm font-semibold tracking-wide text-center">Cours</th>
+                <th class=" p-3 text-sm font-semibold tracking-wide text-center">Cours</th>
                 <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">Action</th>
             </tr>
         </thead>

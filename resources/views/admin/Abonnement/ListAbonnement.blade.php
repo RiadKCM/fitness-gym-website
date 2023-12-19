@@ -10,10 +10,11 @@
         <table class="w-full">
             <thead class="bg-gray-50 border-b-2 border-gray-200">
                 <tr class="text-white text-sm uppercase leading-normal">
-                    <th class="w-10 p-3 text-sm font-semibold tracking-wide text-center">ID</th>
-                    <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">Type</th>
+                    <th class="p-3 text-sm font-semibold tracking-wide text-center">ID</th>
+                    <th class="p-3 text-sm font-semibold tracking-wide text-center">Type</th>
+                    <th class="p-3 text-sm font-semibold tracking-wide text-center">Prix</th>
                     <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">Durée</th>
-                    <th class="w-50 p-3 text-sm font-semibold tracking-wide text-center">Description</th>
+                    <th class="p-3 text-sm font-semibold tracking-wide text-center">Description</th>
                     <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">Action</th>
                 </tr>
             </thead>
@@ -22,6 +23,7 @@
                 <tr class="hover:bg-gray-100">
                     <td class="p-3 text-sm text-white">{{$abonnement->id}}</td>
                     <td class="p-3 text-sm text-white">{{$abonnement->type_abonnement}}</td>
+                    <td class="p-3 text-sm text-white">{{$abonnement->prix}}€</td>
                     <td class="p-3 text-sm text-white">{{$abonnement->duree_validite}} an</td>
                     <td class="p-3 text-sm text-white">{{$abonnement->description}}</td>
                     <td>
