@@ -24,7 +24,7 @@
                 <td class="p-3 text-sm text-white">{{$cour->id}}</td>
                 <td class="p-3 text-sm text-white">{{$cour->type_cours}}</td>
                 <td class="p-3 text-sm text-white">{{$cour->intensite}}</td>
-                <td class="p-3 text-sm text-white">{{$cour->capacite}}</td>
+                <td class="p-3 text-sm text-white">{{$cour->capacite}} personnes</td>
                 <td class="p-3 text-sm text-white">{{$cour->duree}}</td>
                 <td class="p-3 text-sm text-white">{{$cour->id_sport}}</td>
                 <td class="p-3 text-sm text-white">{{$cour->id_coach}}</td>

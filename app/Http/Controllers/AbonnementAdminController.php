@@ -73,7 +73,7 @@ class AbonnementAdminController extends Controller
             'type_abonnement'=>'required',
             'prix'=>'required',
             'duree_validite'=>'required',
-            'description'=>'required'
+            'description'=>'required',
         ]);
 
         if($validate){

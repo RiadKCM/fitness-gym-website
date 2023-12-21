@@ -85,7 +85,7 @@ class SouscriptionController extends Controller
 
             return redirect()->back()->with('success', 'Souscription effectuée avec succès');
         } else {
-            return redirect()->back()->with('error', 'Vous avez déjà souscrit à cet abonnement');
+            return redirect()->back()->with('error', 'Vous avez déjà souscrit à un abonnement');
         }
     }
 }

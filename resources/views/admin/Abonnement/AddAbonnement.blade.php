@@ -18,7 +18,7 @@
 
 
 <div class="text-white"  class="contenu ActiveContenu">
-    <form method="POST" action="{{ route('admin.abonnement.store') }}">
+    <form method="POST" action="{{ route('admin.abonnement.store') }}" class="px-20 pt-6 pb-8 mb-4">
         @csrf
         <div>
             <input type="text" placeholder="Type d'abonnement"id="type_abonnement" name="type_abonnement">

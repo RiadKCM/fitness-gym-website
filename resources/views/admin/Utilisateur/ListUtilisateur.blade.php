@@ -13,6 +13,7 @@
                     <th class="w-10 p-3 text-sm font-semibold tracking-wide text-center">ID</th>
                     <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">Nom</th>
                     <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">email</th>
+                    <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">Admin</th>
                     <th class="w-20 p-3 text-sm font-semibold tracking-wide text-center">Action</th>
                 </tr>
             </thead>
@@ -22,6 +23,7 @@
                     <td class="p-3 text-sm text-white">{{$user->id}}</td>
                     <td class="p-3 text-sm text-white">{{$user->name}}</td>
                     <td class="p-3 text-sm text-white">{{$user->email}}</td>
+                    <td class="p-3 text-sm text-white">{{$user->is_admin}}</td>
                     <td>
                         <a href="/EditUtilisateur/{{$user->id}}" class="btn btn-info">Modifier</a>
                         <a href="/DeleteUtilisateur/{{$user->id}}" class="btn btn-danger">Supprimer</a>

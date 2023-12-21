@@ -27,6 +27,9 @@
         <div>
             <input type="text" placeholder="email"id="email" name="email" value="{{ $users ->email }}"> 
         </div>
+        <div>
+            <input type="text" placeholder="Admin"id="is_admin" name="is_admin" value="{{ $users ->is_admin }}"> 
+        </div>
         <button type="submit">Modifier un utilisateur</button>
     </form> 
 </div>

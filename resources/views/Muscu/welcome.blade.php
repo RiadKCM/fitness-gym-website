@@ -188,6 +188,18 @@
             </div>
         </div>
 
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <div class="row justify-content-center">
             @foreach($abonnements as $abonnement)
                 <div class="col-lg-4 col-md-8">
